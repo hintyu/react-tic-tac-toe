@@ -1,5 +1,5 @@
 # React Tic-tac-toe tutorial
-Simple tic-tac-toe app from React tutorial(https://reactjs.org/tutorial/tutorial.html)!
+Simple tic-tac-toe app from React tutorial(https://reactjs.org/tutorial/tutorial.html)!  
 to start with: 'npm start' on main directory.
 
 # Challenges
