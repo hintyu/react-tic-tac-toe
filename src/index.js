@@ -46,11 +46,13 @@ class HistoryBoard extends React.Component {
     const descText = move?
           `Go to move #${move} ${descTurn}(${step.latest[0]}, ${step.latest[1]})`
           : 'Go to game start'
+      // Challenge 1: make clicked move BOLD
+    const desc = (move === this.props.stepNumber) ? <b>{descText}</b> : descText
 
     return (
         <li key={move}>
           <button onClick={()=> this.props.onClick(move)}>
-            {descText}
+            {desc}
           </button>
         </li>
       )
