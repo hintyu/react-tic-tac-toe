@@ -14,7 +14,7 @@ function Square(props) {
 
 class Board extends React.Component {
   renderSquare(i) {
-    return <Square value={this.props.squares[i]} 
+    return <Square value={this.props.squares[i]}
                    onClick={()=>this.props.onClick(i)}/>
   }
   render() {
@@ -51,7 +51,6 @@ class HistoryBoard extends React.Component {
     }
 
   render() {
-    console.log(this.props.stepNumber)
     return (
         <ol>
           {this.props.history.map((step, move) => this.renderMoveList(step, move))}
@@ -70,6 +69,7 @@ class Game extends React.Component {
       }],
       stepNumber: 0,
       xIsNext: true,
+      showReverse: false  // Challenge 3
     }
   }
 
@@ -90,6 +90,8 @@ class Game extends React.Component {
       xIsNext: !this.state.xIsNext
     })
   }
+
+  handleReverseToggle = () => this.setState({showReverse: !this.state.showReverse})
 
   jumpTo(step) {
     this.setState({
@@ -124,8 +126,13 @@ class Game extends React.Component {
             history={this.state.history}
             onClick={(i)=>this.jumpTo(i)}
             stepNumber={this.state.stepNumber}
+            showReverse={this.state.showReverse}
           />
         </div>
+        <button className="toggle"
+                onClick={()=>this.handleReverseToggle()}>
+          Show Reverse
+        </button>
       </div>
     )
   }
