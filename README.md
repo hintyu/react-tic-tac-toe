@@ -1,6 +1,6 @@
 # React Tic-tac-toe tutorial
 Simple tic-tac-toe app from React tutorial(https://reactjs.org/tutorial/tutorial.html)!  
-to start with: 'npm start' on main directory.
+to start: 'npm install' to install packages, 'npm start' to start.
 
 # Challenges
 ~~0. Display the location for each move in the format (col, row) in the move history list. (DONE!)~~
@@ -10,6 +10,8 @@ to start with: 'npm start' on main directory.
 4. When someone wins, highlight the three squares that caused the win.
 5. When no one wins, display a message about the result being a draw.
 
+6. Rebuild this app using Typescript!
+7. Rebuild this app using redux and react-redux!
 
 
 ------
