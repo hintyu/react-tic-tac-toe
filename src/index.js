@@ -40,6 +40,33 @@ class Board extends React.Component {
   }
 }
 
+class HistoryBoard extends React.Component {
+  renderMoveList = (step, move) => {
+    const descTurn = (move % 2 === 1)? 'X': 'O'
+    const descText = move?
+          `Go to move #${move} ${descTurn}(${step.latest[0]}, ${step.latest[1]})`
+          : 'Go to game start'
+      // Challenge 1: make clicked move BOLD
+    const desc = (move === this.props.stepNumber) ? <b>{descText}</b> : descText
+
+    return (
+        <li key={move}>
+          <button onClick={()=> this.props.onClick(move)}>
+            {desc}
+          </button>
+        </li>
+      )
+    }
+
+  render() {
+    console.log(this.props.stepNumber)
+    return (
+        <ol>
+          {this.props.history.map((step, move) => this.renderMoveList(step, move))}
+        </ol>
+    )
+  }
+}
 
 class Game extends React.Component {
   constructor(props) {
@@ -84,19 +111,6 @@ class Game extends React.Component {
     const current = history[this.state.stepNumber]
     const winner = calculateWinner(current.squares)
 
-    const moves = history.map((step, move) => {
-      const descTurn = (move % 2 === 1)? 'X': 'O'
-      const desc = move? 
-        `Go to move #${move} ${descTurn}(${step.latest[0]}, ${step.latest[1]})` 
-        : 'Go to game start'
-      return (
-        <li key={move}>
-          <button onClick={()=> this.jumpTo(move)}>
-            {desc}
-          </button>
-        </li>
-      )
-    })
     let status
     if (winner) {
       status = `Winner: ${winner} !`
@@ -114,7 +128,11 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <HistoryBoard
+            history={this.state.history}
+            onClick={(i)=>this.jumpTo(i)}
+            stepNumber={this.state.stepNumber}
+          />
         </div>
       </div>
     )
