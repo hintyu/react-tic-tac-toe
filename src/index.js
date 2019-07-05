@@ -14,7 +14,8 @@ function Square(props) {
 
 class Board extends React.Component {
   renderSquare(i) {
-    return <Square value={this.props.squares[i]} 
+    return <Square key={i}
+                   value={this.props.squares[i]}
                    onClick={()=>this.props.onClick(i)}/>
   }
   render() {
@@ -22,8 +23,9 @@ class Board extends React.Component {
     const squareBoard = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]  // Is this still hard-coded anyway?
     return (
       <div>
-        {squareBoard.map(row =>
-          <div className="board-row">
+        {squareBoard.map((row, i) =>
+          <div className="board-row"
+               key={i}>
             {row.map(square => this.renderSquare(square))}
           </div>
         )}
