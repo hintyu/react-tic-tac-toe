@@ -35,7 +35,7 @@ class Board extends React.Component {
 class HistoryBoard extends React.Component {
   renderMoveList = (step, move) => {
     const descTurn = (move % 2 === 1)? 'X': 'O'
-    const descText = move?
+    const descText = (move && move !== 0) ?
           `Go to move #${move} ${descTurn}(${step.latest[0]}, ${step.latest[1]})`
           : 'Go to game start'
       // Challenge 1: make clicked move BOLD
@@ -51,12 +51,17 @@ class HistoryBoard extends React.Component {
     }
 
   render() {
-    return (
+    // Challenge 3: make reverse show option
+    const history = [...this.props.history]
+    return ((!this.props.showReverse) ?
         <ol>
-          {this.props.history.map((step, move) => this.renderMoveList(step, move))}
+          {history.map((step, move) => this.renderMoveList(step, move))}
         </ol>
-    )
-  }
+      :  // Reverse show
+        <ol>
+        {history.reverse().map((step, move) => this.renderMoveList(step, history.length-1 - move))}
+        </ol>
+  )}
 }
 
 class Game extends React.Component {
