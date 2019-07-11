@@ -7,11 +7,11 @@ to start: 'npm install' to install packages, 'npm start' to start.
 ~~(1) Bold the currently selected item in the move list.~~  
 ~~(2) Rewrite Board to use two loops to make the squares instead of hardcoding them.~~  
 ~~(3) Add a toggle button that lets you sort the moves in either ascending or descending order.~~  
-(4) When someone wins, highlight the three squares that caused the win.  
-(5) When no one wins, display a message about the result being a draw.  
+~~(4) When someone wins, highlight the three squares that caused the win.~~  
+~~(5) When no one wins, display a message about the result being a draw.~~  
 
 (6) Rebuild this app using Typescript!  
-(7) Rebuild this app using redux and react-redux!  
+(7) Rebuild this app using redux and hooks!
 (8) Make test code for this app!
 
 ------
