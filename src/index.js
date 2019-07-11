@@ -4,7 +4,7 @@ import './index.css'
 
 function Square(props) {
     return (
-      <button className="square" 
+      <button className={props.classType}
               onClick={props.onClick}>
                 {props.value}
       </button>
@@ -13,20 +13,26 @@ function Square(props) {
 
 
 class Board extends React.Component {
-  renderSquare(i) {
-    return <Square key={i}
-                   value={this.props.squares[i]}
-                   onClick={()=>this.props.onClick(i)}/>
+  renderSquare(i, isHighLight) {
+    return (
+      <Square key={i}
+              value={this.props.squares[i]}
+              onClick={()=>this.props.onClick(i)}
+              classType={isHighLight? "square highlight-square":"square"}
+      />)
   }
+
   render() {
     // Challenge 2: render squares using loop
+    const winLine = this.props.winLine
+    const isHighlight = (idx) => (winLine? winLine.includes(idx) : false)
     const squareBoard = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]  // Is this still hard-coded anyway?
     return (
       <div>
         {squareBoard.map((row, i) =>
           <div className="board-row"
                key={i}>
-            {row.map(square => this.renderSquare(square))}
+            {row.map(square => this.renderSquare(square, isHighlight(square)))}
           </div>
         )}
       </div>
@@ -110,7 +116,8 @@ class Game extends React.Component {
   render(){
     const history = this.state.history
     const current = history[this.state.stepNumber]
-    const winner = calculateWinner(current.squares)
+    const winLine = calculateWinner(current.squares)
+    const winner = winLine? current.squares[winLine[0]] : null
 
     let status
     if (winner) {
@@ -125,6 +132,7 @@ class Game extends React.Component {
           <Board 
             squares={current.squares}
             onClick={(i)=>this.handleClick(i)}
+            winLine={winLine}
           />
         </div>
         <div className="game-info">
@@ -169,7 +177,7 @@ function calculateWinner(squares) {
     if (squares[a] 
       && (squares[a] === squares[b]) 
       && (squares[a] === squares[c])) {
-      return squares[a]
+      return [a, b, c]
     }
   }
   return null
