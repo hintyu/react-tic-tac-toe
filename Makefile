@@ -7,5 +7,5 @@ run:
 lightdocker:
 	make setup
 	make build
-	make run
+	make run &
 	lighthouse http://localhost:3000 --output=json
