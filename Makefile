@@ -3,7 +3,7 @@ setup:
 build:
 	echo "build"
 run:
-	node src/index.js
+	npm start
 lightdocker:
 	make setup
 	make build
