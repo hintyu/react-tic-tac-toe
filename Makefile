@@ -1,10 +1,10 @@
 setup: 
-    npm install
+	npm install
 build:
-    echo "build"
+	echo "build"
 run:
-    node src/index.js
+	node src/index.js
 lightdocker:
-    make setup
-    make build
-    make run
+	make setup
+	make build
+	make run
