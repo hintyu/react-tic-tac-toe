@@ -8,4 +8,3 @@ lightdocker:
 	make setup
 	make build
 	make run &
-	lighthouse http://localhost:3000 --output=json --chrome-flags="--headless"
