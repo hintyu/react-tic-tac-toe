@@ -7,4 +7,4 @@ run:
 lightdocker:
 	make setup
 	make build
-	make run &
+	make run
