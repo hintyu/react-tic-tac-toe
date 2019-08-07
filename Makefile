@@ -4,6 +4,6 @@ build:
 	npm run build
 run:
 	npm start
-light-build:
+lightbuild:
 	make setup
 	make build
