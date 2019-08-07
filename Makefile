@@ -4,7 +4,6 @@ build:
 	echo "build"
 run:
 	npm start
-lightdocker:
+light-build:
 	make setup
 	make build
-	make run
