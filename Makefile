@@ -1,7 +1,7 @@
 setup: 
 	npm install
 build:
-	echo "build"
+	npm run build
 run:
 	npm start
 light-build:
