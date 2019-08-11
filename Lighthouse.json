@@ -1,7 +1,7 @@
 {
   "scripts": {
     "setup": "npm install",
-    "build": "npm build"
+    "build": "npm run build"
   },
   "buildLoc": "build"
 }
