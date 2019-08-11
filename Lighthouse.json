@@ -3,4 +3,5 @@
     "setup": "npm install",
     "build": "npm build"
   }
+  "buildLoc": "build"
 }
